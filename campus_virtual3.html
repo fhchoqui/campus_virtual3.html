@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Campus Virtual: Psicología del Trader 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --azul-profesional: #2A5C82;
+            --verde-crecimiento: #4CAF50;
+            --naranja-motivacional: #FF9800;
+            --gris-claro: #F5F7FA;
+            --gris-oscuro: #333333;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--gris-claro);
+            color: var(--gris-oscuro);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            transition: background-color 0.5s ease;
+        }
+
+        .dark-mode body {
+            background-color: #2c2c2c;
+            color: #e0e0e0;
+        }
+
+        header {
+            background-color: white;
+            padding: 20px 5%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dark-mode header {
+            background-color: var(--gris-oscuro);
+        }
+
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            color: var(--azul-profesional);
+            margin: 0;
+        }
+        
+        h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--azul-profesional);
+        }
+
+        .dark-mode h2, .dark-mode h3 {
+            color: #FF9800;
+        }
+
+        .progress-bar-container {
+            width: 300px;
+            background-color: #e0e0e0;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 20px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background-color: var(--verde-crecimiento);
+            transition: width 0.5s ease-in-out;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+            font-size: 12px;
+            line-height: 20px;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 20px 5%;
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dark-mode main {
+            background-color: #444;
+        }
+
+        .chapter-container {
+            flex-grow: 1;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .btn {
+            background-color: var(--azul-profesional);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover:not(:disabled) {
+            background-color: #1e4564;
+        }
+
+        .btn:disabled {
+            background-color: #b0c4d4;
+            cursor: not-allowed;
+        }
+        
+        .quiz-container {
+            margin-top: 20px;
+            border-top: 2px dashed #ddd;
+            padding-top: 20px;
+        }
+        
+        .quiz-question {
+            margin-bottom: 15px;
+        }
+        
+        .quiz-options {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .quiz-options li {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        .quiz-options li:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .quiz-options li.correct {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+        
+        .quiz-options li.incorrect {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .correct-feedback {
+            color: var(--verde-crecimiento);
+        }
+
+        .incorrect-feedback {
+            color: #dc3545;
+        }
+
+        .xp-display {
+            font-family: 'Poppins', sans-serif;
+            color: var(--naranja-motivacional);
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        .visual-element {
+            border: 1px solid var(--gris-claro);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        
+        .dark-mode .visual-element {
+            background-color: #555;
+            border-color: #666;
+        }
+
+        .infographic {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+        
+        .infographic-item {
+            width: 30%;
+        }
+
+        .badge-container {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .dark-mode .badge-container {
+            background-color: #555;
+        }
+
+        .badge {
+            display: none;
+            width: 80px;
+            height: 80px;
+            background-color: var(--naranja-motivacional);
+            border-radius: 50%;
+            margin: 5px;
+            border: 3px solid var(--verde-crecimiento);
+            position: relative;
+            animation: pulse 1.5s infinite ease-in-out;
+            text-align: center;
+            line-height: 80px;
+            font-size: 2.5rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .badge.unlocked {
+            display: inline-block;
+        }
+
+        .badge-info {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            font-weight: bold;
+            white-space: nowrap;
+            color: var(--gris-oscuro);
+        }
+
+        .dark-mode .badge-info {
+            color: #e0e0e0;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 152, 0, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 152, 0, 0); }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .congratulations {
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            color: var(--verde-crecimiento);
+            margin-top: 50px;
+            animation: fadeIn 2s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .quiz-result-container {
+            margin-top: 20px;
+            text-align: center;
+            padding: 20px;
+            border: 2px solid var(--verde-crecimiento);
+            border-radius: 10px;
+            background-color: #f1fff1;
+        }
+
+        .dark-mode .quiz-result-container {
+            background-color: #2e3e2e;
+            border-color: #3f6f3f;
+        }
+
+        .quiz-result-title {
+            color: var(--verde-crecimiento);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .quiz-result-xp {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--naranja-motivacional);
+            margin-top: 10px;
+        }
+
+        .module-completion-info {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: var(--gris-claro);
+            border-radius: 5px;
+            border: 1px dashed #ccc;
+        }
+        .dark-mode .module-completion-info {
+            background-color: #555;
+            border-color: #777;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Mini Campus Virtual</h1>
+        <div class="header-right">
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="xp-display" id="xpDisplay">XP: 0</div>
+        </div>
+    </header>
+
+    <main>
+        <div class="chapter-container" id="chapterContainer">
+            </div>
+
+        <nav class="navigation">
+            <button class="btn" id="prevBtn" disabled>&#x25C0; Volver</button>
+            <button class="btn" id="nextBtn">Siguiente &#x25BA;</button>
+        </nav>
+        
+        <div class="badge-container hidden" id="badgeContainer">
+            <h3>Insignias Obtenidas</h3>
+            <div id="badgesList"></div>
+        </div>
+    </main>
+
+    <script>
+        const content = {
+            modules: [
+                {
+                    title: "Introducción a la Psicología del Trader",
+                    chapters: [
+                        {
+                            title: "Qué Es la Psicología del Trading y Su Impacto Real en los Resultados",
+                            subtitle: "La Revolución Silenciosa del Trading Moderno",
+                            content: `
+                                <p>Imagina por un momento que tienes acceso a la mejor información del mercado, las herramientas más avanzadas, y una estrategia probada matemáticamente. ¿Garantizaría esto tu éxito? La respuesta rotunda es no. [cite_start]Y ahí radica uno de los misterios más fascinantes de los mercados financieros[cite: 8]. [cite_start]La psicología del trading no es simplemente "controlar las emociones" como muchos creen superficialmente[cite: 8]. [cite_start]Es la ciencia y el arte de comprender, gestionar y optimizar el complejo sistema de procesos mentales, emocionales y conductuales que determinan cada decisión que tomas en los mercados[cite: 8].</p>
+                                <h3>Definición Integral: Más Allá de las Emociones</h3>
+                                [cite_start]<p>La psicología del trading es el estudio y aplicación práctica de los procesos cognitivos, emocionales, neurológicos y conductuales que influyen en las decisiones de inversión y trading, con el objetivo de optimizar el rendimiento, la consistencia y la longevidad en los mercados financieros[cite: 8].</p>
+                                <div class="visual-element infographic">
+                                    <div class="infographic-item">
+                                        <h4>95%</h4>
+                                        [cite_start]<p>de decisiones son emocionales, no racionales[cite: 8].</p>
+                                    </div>
+                                    <div class="infographic-item">
+                                        <h4>78%</h4>
+                                        [cite_start]<p>de los errores son psicológicos, no técnicos[cite: 8].</p>
+                                    </div>
+                                    <div class="infographic-item">
+                                        <h4>+23-47%</h4>
+                                        [cite_start]<p>Mejora de rendimiento en un año con entrenamiento psicológico[cite: 8].</p>
+                                    </div>
+                                </div>
+                                [cite_start]<p>Para entender realmente cómo la psicología afecta tus resultados, necesitas comprender que no tienes un cerebro, sino tres sistemas cerebrales que a menudo entran en conflicto[cite: 8]:</p>
+                                <ul>
+                                    [cite_start]<li><b>Cerebro Reptiliano (Supervivencia):</b> Reacciona al pánico, velocidad de 0.1 segundos[cite: 8].</li>
+                                    [cite_start]<li><b>Cerebro Límbico (Emocional):</b> Avaricia, miedo, euforia, velocidad de 0.5 segundos[cite: 8].</li>
+                                    [cite_start]<li><b>Neocórtex (Racional):</b> Análisis, planificación, gestión del riesgo, velocidad de 2-6 segundos[cite: 8].</li>
+                                </ul>
+                                <h3>La Paradoja del Trader Inteligente</h3>
+                                [cite_start]<p>Los traders más inteligentes académicamente no son necesariamente los más exitosos[cite: 8]. [cite_start]Esto se debe a que la inteligencia analítica puede llevar a sobre-análisis, arrogancia cognitiva, y resistencia al cambio[cite: 8].</p>
+                                <h3>Los Cuatro Pilares de la Psicología del Trading Exitoso</h3>
+                                [cite_start]<p>Los pilares son: Autoconciencia Radical, Regulación Emocional Proactiva, Pensamiento Probabilístico y Disciplina Inteligente[cite: 8].</p>
+                                <h3>La Nueva Frontera: Trading Psicológico vs. Trading Tradicional</h3>
+                                [cite_start]<p>El futuro del trading pertenece a aquellos que pueden integrar la precisión de las máquinas con la sabiduría de la experiencia humana[cite: 172]. [cite_start]Tu verdadera ventaja competitiva radica en tu capacidad de mantener claridad mental y tomar decisiones óptimas bajo presión[cite: 8].</p>
+                            `,
+                            xp: 50
+                        },
+                        {
+                            title: "Por Qué el 90% de los Traders Fracasan - El Factor Psicológico Oculto",
+                            subtitle: "El Mito de la Falta de Conocimiento Técnico",
+                            content: `
+                                [cite_start]<p>El 90% de los traders retail pierden dinero, pero solo el 5% de esas pérdidas se deben a falta de conocimiento técnico[cite: 8]. El factor psicológico oculto es el verdadero culpable. Las cinco causas psicológicas reales del fracaso son:</p>
+                                <ol>
+                                    [cite_start]<li><b>Revenge Trading (Trading de Venganza):</b> 34% de las pérdidas[cite: 8]. [cite_start]Es el intento de recuperar pérdidas inmediatamente con mayor agresividad[cite: 8].</li>
+                                    [cite_start]<li><b>FOMO Compulsivo (Fear of Missing Out):</b> 28% de las pérdidas[cite: 8]. [cite_start]Entrar en operaciones por miedo a perder oportunidades, no por un análisis sólido[cite: 8].</li>
+                                    [cite_start]<li><b>Profit Snatching (Arrancar Ganancias):</b> 22% de las pérdidas[cite: 8]. [cite_start]Cerrar posiciones ganadoras prematuramente por miedo a que se reviertan[cite: 8].</li>
+                                    [cite_start]<li><b>Analysis Paralysis:</b> 11% de las pérdidas[cite: 8]. [cite_start]Sobre-análisis que lleva a perder oportunidades o entrar demasiado tarde[cite: 8].</li>
+                                    [cite_start]<li><b>Lack of Identity Clarity:</b> 5% de las pérdidas[cite: 8]. [cite_start]No tener claridad sobre el tipo de trader que eres[cite: 8].</li>
+                                </ol>
+                                <h3>El Ciclo Psicológico de Autodestrucción</h3>
+                                [cite_start]<p>Los traders a menudo pasan por un ciclo de cuatro fases: Período de luna de miel, Verificación de la realidad, Fase de desesperación y Capitulación[cite: 8]. [cite_start]La clave para el éxito es romper este ciclo entendiendo las diferencias entre los "winners" y los "losers"[cite: 8].</p>
+                                <div class="visual-element">
+                                    <h4>Mentalidad del Ganador vs. Perdedor</h4>
+                                    <ul>
+                                        [cite_start]<li><b>Ganadores:</b> Ven las pérdidas como "costo de hacer negocios", piensan probabilísticamente, se enfocan en el proceso, y buscan ayuda profesional[cite: 8].</li>
+                                        [cite_start]<li><b>Perdedores:</b> Ven las pérdidas como "fracasos personales", piensan en certezas, se enfocan en resultados individuales y rechazan la ayuda[cite: 8].</li>
+                                    </ul>
+                                </div>
+                            `,
+                            xp: 50
+                        },
+                        {
+                            title: "Historia y Evolución - De Graham y Buffett Hasta la Neuropsicología Moderna",
+                            subtitle: "Los Pioneros: Fundamentos Psicológicos Tempranos (1934-1970)",
+                            content: `
+                                [cite_start]<p><b>Benjamin Graham:</b> Considerado el primer psicólogo de mercados con su libro "The Intelligent Investor"[cite: 37]. [cite_start]Introdujo el concepto de Mr. Market, una persona bipolar cuyas emociones crean oportunidades[cite: 37].</p>
+                                [cite_start]<p><b>Warren Buffett:</b> Su contribución psicológica más importante es la paciencia como ventaja competitiva, y la famosa frase "Ten miedo cuando otros son codiciosos, sé codicioso cuando otros tienen miedo"[cite: 38].</p>
+                                <h3>La Primera Revolución: Behavioral Finance (1970-1990)</h3>
+                                [cite_start]<p><b>Kahneman y Tversky:</b> Fundadores de la Economía Conductual con su "Prospect Theory"[cite: 39]. [cite_start]Descubrieron la Aversión a las Pérdidas (las pérdidas duelen 2.5 veces más que las ganancias equivalentes) y el Efecto del Marco (cómo se presenta la información cambia las decisiones)[cite: 39].</p>
+                                <h3>La era de los psicólogos del trading (1990-2010)</h3>
+                                [cite_start]<p><b>Mark Douglas:</b> En su libro "Trading in the Zone", introdujo el pensamiento probabilístico y las "5 Verdades Fundamentales" del trading[cite: 39].</p>
+                                [cite_start]<p><b>Brett Steenbarger:</b> Aplicó la psicología clínica al trading, con conceptos como el aprendizaje dependiente del estado y las fases del desarrollo del trader[cite: 39].</p>
+                                [cite_start]<p><b>Van Tharp:</b> Sistematizó la psicología del trading con conceptos como el "Position Sizing" y la "Expectativa"[cite: 39].</p>
+                                <h3>La Revolución Neurocientífica (2000-presente)</h3>
+                                [cite_start]<p>Pioneros como Jason Zweig, con su libro "Tu dinero y tu cerebro", utilizaron fMRI para estudiar los cerebros de los traders en tiempo real[cite: 45]. [cite_start]Descubrieron que la anticipación de ganancias activa el cerebro más que las ganancias reales y que la anticipación de la pérdida crea una respuesta de dolor físico[cite: 45].</p>
+                            `,
+                            xp: 50
+                        }
+                    ],
+                    quiz: {
+                        questions: [
+                            {
+                                text: "¿Qué porcentaje de las pérdidas de los traders retail se deben a factores psicológicos?",
+                                options: ["10%", "50%", "78%", "95%"],
+                                correct: "78%"
+                            },
+                            {
+                                text: "Según el texto, el 'Revenge Trading' es responsable de qué porcentaje de las pérdidas?",
+                                options: ["11%", "22%", "34%", "5%"],
+                                correct: "34%"
+                            },
+                            {
+                                text: "La 'Aversión a las Pérdidas' (Loss Aversion), descubierta por Kahneman y Tversky, sugiere que las pérdidas duelen X veces más que las ganancias equivalentes. ¿Cuánto es X?",
+                                options: ["1.5x", "2.5x", "3.0x", "5.0x"],
+                                correct: "2.5x"
+                            }
+                        ]
+                    }
+                },
+                {
+                    title: "Neurociencia del Trading",
+                    chapters: [
+                        {
+                            title: "Cómo funciona tu cerebro durante una operación: sistema límbico vs. corteza prefrontal",
+                            subtitle: "El Conflicto Interno",
+                            content: `
+                                <h3>El Conflicto Interno</h3>
+                                [cite_start]<p>Durante una operación de trading, tu cerebro no actúa como una unidad coherente, sino como un campo de batalla entre dos sistemas principales[cite: 1, 8, 38, 45, 76]:</p>
+                                <ul>
+                                    <li><b>Sistema Límbico (Respuesta emocional):</b> Rápido e instintivo. [cite_start]Se activa ante el miedo (pérdidas) y la avaricia (ganancias potenciales), liberando hormonas como el cortisol y la dopamina[cite: 1, 8, 38, 45, 76]. [cite_start]Esto puede llevar a decisiones impulsivas como cerrar una operación demasiado pronto o mantener una perdedora[cite: 1, 8, 38, 45, 76].</li>
+                                    <li><b>Corteza Prefrontal (Análisis Racional):</b> Lenta y deliberativa. Es el centro de la planificación, el análisis y la toma de decisiones lógicas. [cite_start]Este sistema es el que usa tu estrategia de trading[cite: 1, 8, 38, 45, 76].</li>
+                                </ul>
+                                <p>El problema es que el sistema límbico es mucho más rápido. [cite_start]Una pérdida activa una respuesta de dolor físico antes de que tu corteza prefrontal pueda siquiera procesar el evento[cite: 45]. [cite_start]El objetivo del entrenamiento psicológico es fortalecer la conexión y el control de la corteza prefrontal sobre el sistema límbico[cite: 1, 8, 38, 45, 76].</p>
+                                <h3>La Neuroplasticidad del Trader</h3>
+                                [cite_start]<p>Afortunadamente, el cerebro no es un órgano estático[cite: 1, 8, 38, 45, 76]. [cite_start]La neuroplasticidad es la capacidad de tu cerebro para reorganizarse y formar nuevas conexiones neuronales a lo largo de la vida[cite: 2]. [cite_start]Cada vez que practicas la disciplina, la paciencia o la gestión emocional, estás reconfigurando literalmente tu cerebro para el éxito en el trading[cite: 2].</p>
+                            `,
+                            xp: 50
+                        },
+                        {
+                            title: "Neurotransmisores del trading: dopamina, serotonina y cortisol en acción",
+                            subtitle: "La Química del Éxito y el Fracaso",
+                            content: `
+                                <h3>La Química del Éxito y el Fracaso</h3>
+                                <p>Los neurotransmisores son los mensajeros químicos de tu cerebro. [cite_start]En el trading, tres son especialmente relevantes[cite: 1]:</p>
+                                <ul>
+                                    <li><b>Dopamina:</b> Conocida como el neurotransmisor de la recompensa y la motivación. [cite_start]Se libera ante la anticipación de una ganancia, no solo al obtenerla[cite: 45]. [cite_start]Esto puede generar ciclos de adicción al trading y sobreoperaciones[cite: 45].</li>
+                                    <li><b>Serotonina:</b> Se asocia con el bienestar y la felicidad. [cite_start]Niveles bajos pueden llevar a la irritabilidad y a decisiones impulsivas[cite: 1].</li>
+                                    <li><b>Cortisol:</b> La hormona del estrés. Se libera en situaciones de miedo y pánico, como durante un drawdown. [cite_start]Altos niveles de cortisol afectan negativamente tu capacidad para pensar con claridad y tomar decisiones lógicas[cite: 45, 76].</li>
+                                </ul>
+                                <div class="visual-element">
+                                    <h4>Gráfico de la Curva de Estrés y Rendimiento</h4>
+                                    <p>Simulación de un gráfico que muestra cómo un nivel óptimo de estrés (eustress) mejora el rendimiento, mientras que un estrés excesivo (distress) lo degrada.</p>
+                                    <div style="width: 100%; height: 100px; background: linear-gradient(to right, #4CAF50 0%, #FF9800 50%, #FF5722 100%);"></div>
+                                </div>
+                            `,
+                            xp: 50
+                        },
+                        {
+                            title: "El impacto de los ritmos circadianos en las decisiones de trading",
+                            subtitle: "Sincroniza tu Mente con el Mercado",
+                            content: `
+                                [cite_start]<p>Los ritmos circadianos son los ciclos de 24 horas que regulan el sueño, el estado de alerta y el rendimiento cognitivo[cite: 1]. [cite_start]Operar en horas que no se alinean con tu "cronotipo" natural (si eres un 'búho' o una 'alondra') puede llevar a la fatiga, el sobretrading y errores costosos[cite: 1].</p>
+                                <h3>Estrategias de Sincronización</h3>
+                                [cite_start]<p>Aprender a alinear tus sesiones de trading con tus picos de energía naturales es una ventaja competitiva[cite: 114]. [cite_start]Si no puedes cambiar tus horarios, puedes usar estrategias como la 'Adaptación Gradual' o elegir nichos de mercado que se ajusten a tu cronotipo[cite: 114].</p>
+                                <div class="visual-element infographic">
+                                    <div class="infographic-item">
+                                        <h4>Adaptación Gradual</h4>
+                                        [cite_start]<p>Cambia horarios 15-30 min por semana para ajustar a tu cronotipo[cite: 114].</p>
+                                    </div>
+                                    <div class="infographic-item">
+                                        <h4>Nicho de Mercado</h4>
+                                        [cite_start]<p>Elige mercados que coincidan con tus horas de mayor rendimiento (ej. Crypto 24/7 para búhos)[cite: 114].</p>
+                                    </div>
+                                </div>
+                            `,
+                            xp: 50
+                        }
+                    ],
+                    quiz: {
+                        questions: [
+                            {
+                                text: "La neuroplasticidad es la capacidad del cerebro para:",
+                                options: ["Liberar dopamina", "Regular el sueño", "Reorganizarse y formar nuevas conexiones neuronales", "Activar el sistema límbico"],
+                                correct: "Reorganizarse y formar nuevas conexiones neuronales"
+                            },
+                            {
+                                text: "¿Qué neurotransmisor se asocia con el estrés y puede afectar la toma de decisiones lógicas en el trading?",
+                                options: ["Dopamina", "Serotonina", "Adrenalina", "Cortisol"],
+                                correct: "Cortisol"
+                            },
+                            {
+                                text: "Según el texto, ¿cuál de los siguientes es un sistema cerebral que actúa en el trading?",
+                                options: ["El Cerebro Límbico", "El Cerebro Solar", "El Cerebro Analítico", "El Cerebro Frontal"],
+                                correct: "El Cerebro Límbico"
+                            }
+                        ]
+                    }
+                },
+                {
+                    title: "Fundamentos de psicología profunda",
+                    chapters: [
+                        {
+                            title: "Las 8 emociones maestras del trader y sus triggers específicos",
+                            subtitle: "El Espectro Emocional del Mercado",
+                            content: `
+                                <p>Las emociones no son el problema, sino la falta de conciencia y la reacción descontrolada a ellas. Las 8 emociones maestras son: miedo, avaricia, esperanza, arrepentimiento, euforia, pánico, frustración y soledad. Cada una tiene un 'trigger' o desencadenante específico en el trading.</p>
+                                <div class="visual-element">
+                                    <h4>Ejemplo de Triggers Emocionales</h4>
+                                    <ul>
+                                        <li><b>Miedo:</b> Una operación perdedora que se acerca al stop loss.</li>
+                                        <li><b>Avaricia:</b> Una operación que se dispara a tu favor.</li>
+                                        <li><b>Esperanza:</b> Mantener una operación perdedora con la fe de que se recuperará.</li>
+                                    </ul>
+                                </div>
+                            `,
+                            xp: 50
+                        },
+                        {
+                            title: "Mapa completo de sesgos cognitivos con casos reales de trading",
+                            subtitle: "Cuando tu Mente Juega en Tu Contra",
+                            content: `
+                                <p>Un sesgo cognitivo es un error sistemático en la forma en que pensamos. Conocerlos es el primer paso para superarlos. Ejemplos comunes en el trading son:</p>
+                                <ul>
+                                    <li><b>Sesgo de Confirmación:</b> Solo buscas información que confirme tus creencias previas.</li>
+                                    <li><b>Sesgo de Anclaje:</b> Te enfocas demasiado en el primer precio o información que viste.</li>
+                                    <li><b>Sesgo de Recencia:</b> Le das más peso a la información reciente, ignorando datos históricos.</li>
+                                    <li><b>Falacia del Costo Hundido:</b> Mantener una posición perdedora porque ya invertiste tiempo o dinero.</li>
+                                </ul>
+                                <div class="visual-element">
+                                    <h4>El Mapa de Sesgos del Trader</h4>
+                                    <p>Simulación de un diagrama de flujo simple de decisiones sesgadas.</p>
+                                    <div style="width: 100%; height: 100px; background-color: #f0f0f0; border: 1px dashed #ccc; padding: 10px;">
+                                        <div style="background-color: #FF9800; padding: 5px; margin: 5px; text-align: center;">Idea de Trade</div>
+                                        <div style="display: flex; justify-content: space-around;">
+                                            <div style="background-color: #2A5C82; padding: 5px; margin: 5px; text-align: center;">Buscar noticias positivas (Sesgo de Confirmación)</div>
+                                            <div style="background-color: #2A5C82; padding: 5px; margin: 5px; text-align: center;">Entrar por precio inicial (Sesgo de Anclaje)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `,
+                            xp: 50
+                        },
+                        {
+                            title: "Metacognición: pensar sobre tu forma de pensar en el mercado",
+                            subtitle: "Tu Mayor Habilidad",
+                            content: `
+                                [cite_start]<p>La <b>metacognición</b> es la capacidad de monitorear y controlar tus propios procesos de pensamiento. En el trading, esto significa ser consciente de cómo y por qué tomas tus decisiones[cite: 93].</p>
+                                [cite_start]<p>Un ejercicio clave es el "comentario comercial"[cite: 94]: durante una semana, proporciona comentarios internos constantes sobre tus acciones, como si un locutor deportivo comentara tu juego. [cite_start]Esto te ayuda a identificar patrones destructivos y a aplicar un "análisis suficientemente bueno" en lugar de buscar la perfección[cite: 93, 94].</p>
+                            `,
+                            xp: 50
+                        }
+                    ],
+                    quiz: {
+                        questions: [
+                            {
+                                text: "La Falacia del Costo Hundido se refiere a:",
+                                options: ["Mantener una posición ganadora por mucho tiempo", "Mantener una posición perdedora porque ya invertiste en ella", "Entrar en una operación por FOMO", "Cerrar una operación prematuramente"],
+                                correct: "Mantener una posición perdedora porque ya invertiste en ella"
+                            },
+                            {
+                                text: "La metacognición es la habilidad de:",
+                                options: ["Analizar gráficos complejos", "Controlar tus emociones completamente", "Pensar sobre tu propia forma de pensar", "Predecir movimientos del mercado"],
+                                correct: "Pensar sobre tu propia forma de pensar"
+                            },
+                            {
+                                text: "¿Qué sesgo te hace darle más peso a la información reciente en lugar de datos históricos?",
+                                options: ["Sesgo de Anclaje", "Sesgo de Recencia", "Sesgo de Confirmación", "Sesgo de la Avaricia"],
+                                correct: "Sesgo de Recencia"
+                            }
+                        ]
+                    }
+                },
+                {
+                    title: "Modelo Mental del Trader Profesional",
+                    chapters: [
+                        {
+                            title: "Mentalidad de abundancia vs. escasez en los mercados",
+                            subtitle: "El Cambio de Paradigma",
+                            content: `
+                                <p>La mayoría de los traders operan desde una mentalidad de escasez: creen que las oportunidades son limitadas y deben ser aprovechadas a cualquier costo. Esto lleva a FOMO y sobretrading. [cite_start]Un trader profesional opera desde una mentalidad de abundancia: sabe que las oportunidades son infinitas y que la paciencia es su mayor ventaja[cite: 116].</p>
+                                <div class="visual-element">
+                                    <h4>Mentalidad de Abundancia</h4>
+                                    <p>Simulación de un flujo de pensamiento positivo.</p>
+                                    <div style="background-color: var(--verde-crecimiento); color: white; padding: 10px; border-radius: 5px; text-align: center;">
+                                        Oportunidad perdida hoy = Habrá otra mañana.<br/>
+                                        La paciencia es mi estrategia.
+                                    </div>
+                                </div>
+                            `,
+                            xp: 50
+                        },
+                        {
+                            title: "Pensamiento probabilístico vs. pensamiento binario",
+                            subtitle: "Más Allá de Ganar o Perder",
+                            content: `
+                                <p>Un trader con <b>pensamiento binario</b> ve cada operación como "ganar o perder". Esto genera una presión inmensa. [cite_start]El trader profesional utiliza el <b>pensamiento probabilístico</b>, viendo cada operación como un evento dentro de una serie de eventos[cite: 8, 39, 116]. [cite_start]Entiende que un resultado perdedor no significa que la estrategia sea mala, solo que fue parte de la variabilidad estadística[cite: 8].</p>
+                                <p>Una estrategia con una tasa de éxito del 60% es rentable a largo plazo, pero fallará el 40% de las veces. [cite_start]El pensamiento probabilístico te permite aceptar esas pérdidas sin sabotearte[cite: 8, 39, 116].</p>
+                            `,
+                            xp: 50
+                        },
+                        {
+                            title: "Construcción de tu identidad como trader: quién eres vs. qué haces",
+                            subtitle: "La Mente de un Dueño de Negocio",
+                            content: `
+                                <p>Los amateurs dicen: "Hago trading". Los profesionales dicen: "Soy un trader". [cite_start]Este cambio de identidad es fundamental[cite: 116]. Cuando el trading es parte de tu identidad, te tomas en serio la disciplina, el riesgo y la mejora continua. [cite_start]El paradigma del trader-empresario implica tratar el trading como un negocio serio, no como un hobby[cite: 116].</p>
+                                [cite_start]<p>Esto implica crear un plan de negocios, tener métricas de rendimiento y enfocarse en la visión sistémica, no en una sola operación[cite: 116, 118].</p>
+                            `,
+                            xp: 50
+                        }
+                    ],
+                    quiz: {
+                        questions: [
+                            {
+                                text: "La mentalidad de 'escasez' en el trading a menudo conduce a:",
+                                options: ["FOMO y sobretrading", "Paciencia extrema", "Análisis exhaustivo", "Gestión de riesgos conservadora"],
+                                correct: "FOMO y sobretrading"
+                            },
+                            {
+                                text: "El pensamiento probabilístico implica ver cada operación como:",
+                                options: ["Un evento aislado", "Una oportunidad de riqueza instantánea", "Una prueba de tu habilidad", "Un evento dentro de una serie de eventos"],
+                                correct: "Un evento dentro de una serie de eventos"
+                            },
+                            {
+                                text: "El cambio de 'Hago trading' a 'Soy un trader' se refiere a la construcción de tu:",
+                                options: ["Estrategia", "Capital", "Identidad", "Hardware"],
+                                correct: "Identidad"
+                            }
+                        ]
+                    }
+                },
+                {
+                    title: "Herramientas Avanzadas de Regulación Emocional",
+                    chapters: [
+                        {
+                            title: "Técnicas de respiración específicas para cada momento del trading",
+                            subtitle: "Controla tu Fisiología",
+                            content: `<p>La respiración es una de las herramientas más poderosas para influir en tu sistema nervioso autónomo. Técnicas como la respiración en caja (inhalar 4, sostener 4, exhalar 4, sostener 4) son ideales para reducir el cortisol y la frecuencia cardíaca antes de una operación estresante. Durante un drawdown, una respiración profunda y lenta ayuda a activar el sistema nervioso parasimpático, promoviendo la calma.</p>`,
+                            xp: 50
+                        },
+                        {
+                            title: "Mindfulness aplicado: meditación pre-mercado y durante operaciones",
+                            subtitle: "El Poder del Aquí y Ahora",
+                            content: `<p>El mindfulness, o la atención plena, es la práctica de estar presente y consciente sin juicio. Una meditación de 10 minutos antes de la sesión de trading te prepara mentalmente. Durante una operación, un "check-in" de 30 segundos te permite notar emociones sin ser arrastrado por ellas.</p>`,
+                            xp: 50
+                        },
+                        {
+                            title: "Protocolo de reset emocional en tiempo real",
+                            subtitle: "Tu Botón de Pánico Inteligente",
+                            content: `<p>Un protocolo de reset es una secuencia de acciones predefinidas para usar cuando sientes que estás perdiendo el control. Ejemplo: 1. Cerrar la plataforma. 2. Respirar 10 veces profundamente. 3. Alejarte del ordenador. 4. Preguntarte: "¿Qué emoción estoy sintiendo y por qué?". Esto rompe el ciclo de toma de decisiones impulsivas.</p>`,
+                            xp: 50
+                        }
+                    ],
+                    quiz: {
+                        questions: [
+                            {
+                                text: "La respiración en caja es ideal para:",
+                                options: ["Aumentar la dopamina", "Reducir el cortisol y la frecuencia cardíaca", "Incrementar la energía", "Mejorar la visión"],
+                                correct: "Reducir el cortisol y la frecuencia cardíaca"
+                            },
+                            {
+                                text: "El mindfulness en el trading busca:",
+                                options: ["Predecir movimientos del mercado", "Ignorar las emociones", "Estar presente y consciente sin juicio", "Operar sin descanso"],
+                                correct: "Estar presente y consciente sin juicio"
+                            },
+                            {
+                                text: "Un 'protocolo de reset' está diseñado para:",
+                                options: ["Celebrar una gran ganancia", "Reiniciar la plataforma de trading", "Romper un ciclo de decisiones impulsivas", "Actualizar el software"],
+                                correct: "Romper un ciclo de decisiones impulsivas"
+                            }
+                        ]
+                    }
+                },
+                {
+                    title: "Psicología de la Gestión del Capital",
+                    chapters: [
+                        {
+                            title: "La psicología oculta detrás del sizing de posiciones",
+                            subtitle: "Tu Estrategia de Tamaño",
+                            content: `<p>El tamaño de tu posición (position sizing) no es solo una fórmula matemática; es una expresión de tu psicología del riesgo. El miedo puede llevarte a usar tamaños demasiado pequeños (limitando las ganancias), mientras que la avaricia puede empujarte a usar tamaños demasiado grandes (arriesgando todo el capital). [cite_start]Encontrar el tamaño adecuado es un equilibrio entre tu estrategia y tu tolerancia al riesgo emocional[cite: 168].</p>`,
+                            xp: 50
+                        },
+                        {
+                            title: "Money management emocional vs. racional: encontrando el equilibrio",
+                            subtitle: "Cuando las Emociones Manejan tu Dinero",
+                            content: `<p>El money management racional se basa en reglas objetivas (ej. no arriesgar más del 1% del capital). El emocional se basa en cómo te sientes. [cite_start]El trader profesional fusiona ambos, usando las reglas racionales como un marco, pero siendo consciente de cuándo sus emociones le están pidiendo violar esas reglas (por ejemplo, después de una pérdida)[cite: 168].</p>`,
+                            xp: 50
+                        },
+                        {
+                            title: "Psicología del drawdown: navegando las pérdidas sin colapsar",
+                            subtitle: "La Prueba de Fuego",
+                            content: `<p>Un drawdown es un período de pérdidas consecutivas. La mayoría de los traders colapsan psicológicamente aquí. [cite_start]Navegar un drawdown con éxito requiere un protocolo claro [cite: 160][cite_start]: 1. Respuesta de crisis (parar de operar), 2. Evaluación (analizar qué falló), 3. Reconstrucción progresiva (volver con tamaño mínimo)[cite: 161].</p>`,
+                            xp: 50
+                        }
+                    ],
+                    quiz: {
+                        questions: [
+                            {
+                                text: "El position sizing es un reflejo de tu:",
+                                options: ["Conocimiento técnico", "Tolerancia al riesgo emocional", "Velocidad de internet", "Capital total"],
+                                correct: "Tolerancia al riesgo emocional"
+                            },
+                            {
+                                text: "Un 'drawdown' es un período de:",
+                                options: ["Ganancias masivas", "Pérdidas consecutivas", "Mercado lateral", "Inestabilidad política"],
+                                correct: "Pérdidas consecutivas"
+                            },
+                            {
+                                text: "El 'money management emocional' se basa en:",
+                                options: ["Reglas objetivas", "Cálculos complejos", "Cómo te sientes", "El consejo de un mentor"],
+                                correct: "Cómo te sientes"
+                            }
+                        ]
+                    }
+                },
+                {
+                    title: "Estrategias Psicológicas por Etapas de Desarrollo",
+                    chapters: [
+                        {
+                            title: "El trader principiante: construyendo bases psicológicas sólidas",
+                            subtitle: "El Inicio del Viaje",
+                            content: `<p>El trader principiante debe enfocarse en la supervivencia. Las metas no son ganar dinero, sino desarrollar hábitos fundamentales: disciplina, consistencia y una gestión de riesgos impecable. [cite_start]Aquí, las pérdidas deben ser vistas como un costo de aprendizaje, no como fracasos personales[cite: 174].</p>`,
+                            xp: 50
+                        },
+                        {
+                            title: "Navegando las pérdidas: protocolo de recuperación mental",
+                            subtitle: "El Arte de la Recuperación",
+                            content: `<p>Después de una pérdida significativa, la recuperación mental es clave. El protocolo de 3 pasos es: 1. Aceptar la pérdida sin juicio. 2. Analizar objetivamente la operación para aprender. 3. [cite_start]Volver al plan de trading con un tamaño de posición reducido para reconstruir la confianza[cite: 160].</p>`,
+                            xp: 50
+                        },
+                        {
+                            title: "Breakthrough psicológico: del trader inconsistente al profesional",
+                            subtitle: "El Salto Cuántico",
+                            content: `<p>El 'breakthrough' ocurre cuando el trader deja de operar basándose en la emoción y comienza a confiar ciegamente en su proceso. Este punto de inflexión no es técnico, es mental. [cite_start]Se caracteriza por la capacidad de ejecutar un plan sin importar el resultado individual de la operación[cite: 187].</p>`,
+                            xp: 50
+                        }
+                    ],
+                    quiz: {
+                        questions: [
+                            {
+                                text: "La meta principal del trader principiante es:",
+                                options: ["Maximizar ganancias", "Vencer al mercado", "Desarrollar hábitos fundamentales", "Comprar los mejores indicadores"],
+                                correct: "Desarrollar hábitos fundamentales"
+                            },
+                            {
+                                text: "Un 'breakthrough' psicológico se caracteriza por:",
+                                options: ["Ganar una gran suma de dinero", "Dejar de operar por emoción y empezar a confiar en el proceso", "Encontrar una estrategia perfecta", "Nunca tener pérdidas"],
+                                correct: "Dejar de operar por emoción y empezar a confiar en el proceso"
+                            },
+                            {
+                                text: "Después de una pérdida, ¿cuál es el primer paso en el protocolo de recuperación mental?",
+                                options: ["Duplicar el tamaño de la posición", "Aceptar la pérdida sin juicio", "Cambiar de estrategia", "Culpar al mercado"],
+                                correct: "Aceptar la pérdida sin juicio"
+                            }
+                        ]
+                    }
+                },
+                {
+                    title: "Integración Estrategia-Psicología",
+                    chapters: [
+                        {
+                            title: "Matching psicológico: alineando tu estrategia con tu perfil mental",
+                            subtitle: "El Enfoque Híbrido",
+                            content: `<p>No todas las estrategias de trading son para todos. El matching psicológico es el proceso de alinear tu personalidad, cronotipo y tolerancia al riesgo con tu estrategia. Un trader impulsivo puede no ser apto para el swing trading, mientras que una persona analítica puede frustrarse con el scalping. [cite_start]El éxito real reside en la alineación perfecta entre "quién eres" y "qué haces"[cite: 190].</p>`,
+                            xp: 50
+                        },
+                        {
+                            title: "Backtesting psicológico: probando tu resistencia mental",
+                            subtitle: "Simulando la Presión",
+                            content: `<p>El backtesting no es solo para estrategias; es una herramienta poderosa para probar tu resistencia mental. Mientras haces backtesting, anota tus emociones y pensamientos en cada operación simulada. Si te sientes estresado o indeciso, sabes que esa es un área para trabajar. [cite_start]Esto te permite "fallar" en un entorno seguro antes de operar con dinero real[cite: 190].</p>`,
+                            xp: 50
+                        },
+                        {
+                            title: "Gestión del riesgo emocional: más allá de los stop-loss",
+                            subtitle: "Tu GPS Emocional",
+                            content: `<p>Un stop-loss es una herramienta de gestión de riesgo financiera, pero ¿qué hay de tu riesgo emocional? [cite_start]La gestión del riesgo emocional implica tener un protocolo claro para cuando las cosas salen mal, como un 'Protocolo Circuit Breaker' que te dice cuándo cerrar todo y alejarte de la pantalla[cite: 206]. [cite_start]El 'Manual de Procedimientos Psicológicos' es tu GPS para cuando tu mente quiere sabotearte[cite: 201].</p>`,
+                            xp: 50
+                        }
+                    ],
+                    quiz: {
+                        questions: [
+                            {
+                                text: "El 'matching psicológico' busca alinear tu estrategia de trading con tu:",
+                                options: ["Capital disponible", "Número de indicadores", "Perfil mental y de personalidad", "Velocidad de ejecución"],
+                                correct: "Perfil mental y de personalidad"
+                            },
+                            {
+                                text: "El backtesting psicológico se usa para:",
+                                options: ["Probar la rentabilidad de una estrategia", "Probar la resistencia mental de un trader", "Conseguir capital para operar", "Predecir el futuro del mercado"],
+                                correct: "Probar la resistencia mental de un trader"
+                            },
+                            {
+                                text: "Un 'Protocolo Circuit Breaker' se activa cuando:",
+                                options: ["Tienes una gran ganancia", "El mercado cierra", "Sientes que estás perdiendo el control", "Necesitas salir a comer"],
+                                correct: "Sientes que estás perdiendo el control"
+                            }
+                        ]
+                    }
+                },
+                {
+                    title: "Casos de Estudio y Simulaciones Reales",
+                    chapters: [
+                        {
+                            title: "Anatomía de 10 traders exitosos: patrones psicológicos comunes",
+                            subtitle: "Más Allá de la Suerte",
+                            [cite_start]content: `<p>Se ha estudiado que los traders más exitosos tienen patrones psicológicos comunes: disciplina inquebrantable, una mentalidad de crecimiento, la capacidad de aceptar pérdidas sin juicio, y una rutina de revisión constante[cite: 226]. Su éxito no es por suerte, sino por la repetición de procesos mentales y conductuales sanos.</p>`,
+                            xp: 50
+                        },
+                        {
+                            title: "Análisis de fracasos épicos: qué no hacer y por qué",
+                            subtitle: "El Lado Oscuro del Trading",
+                            content: `<p>Estudiar los fracasos es tan importante como estudiar los éxitos. Los fracasos épicos casi siempre se remontan a fallos psicológicos, como el trading de venganza, la sobreexposición por avaricia o la incapacidad de aceptar una pérdida. [cite_start]El factor humano es el denominador común en la mayoría de los colapsos financieros[cite: 226].</p>`,
+                            xp: 50
+                        },
+                        {
+                            title: "Simulaciones de crisis: preparándote para lo inesperado",
+                            subtitle: "Entrenamiento para el Caos",
+                            [cite_start]content: `<p>No puedes predecir las crisis, pero puedes prepararte para ellas[cite: 228]. Una simulación de crisis implica crear escenarios hipotéticos de alta volatilidad y practicar tus protocolos de respuesta emocional. [cite_start]Esto construye 'resiliencia antifrágil' [cite: 405][cite_start]—la capacidad de ser más fuerte después de la crisis, no a pesar de ella[cite: 228, 405].</p>`,
+                            xp: 50
+                        }
+                    ],
+                    quiz: {
+                        questions: [
+                            {
+                                text: "Los fracasos épicos en el trading se deben casi siempre a:",
+                                options: ["Fallos en el software", "Fallos psicológicos", "Falta de capital", "Noticias inesperadas"],
+                                correct: "Fallos psicológicos"
+                            },
+                            {
+                                text: "La 'resiliencia antifrágil' es la capacidad de:",
+                                options: ["No tener pérdidas", "Ser más fuerte después de una crisis", "Operar sin emociones", "Siempre tener éxito"],
+                                correct: "Ser más fuerte después de una crisis"
+                            },
+                            {
+                                text: "Una característica común de los traders exitosos es:",
+                                options: ["Suerte en el mercado", "Indicar el momento perfecto", "Disciplina inquebrantable", "Nunca tener pérdidas"],
+                                correct: "Disciplina inquebrantable"
+                            }
+                        ]
+                    }
+                },
+                {
+                    title: "Optimización Mental y Rendimiento Peak",
+                    chapters: [
+                        {
+                            title: "Construcción de resiliencia antifragil: más fuerte después de cada crisis",
+                            subtitle: "Crecimiento a Través del Estrés",
+                            content: `<p>La antifragilidad es más que resiliencia. La resiliencia te permite volver a tu estado original después de un shock. La antifragilidad te hace más fuerte. [cite_start]Para el trader, esto significa usar el estrés del mercado y los drawdowns como oportunidades para mejorar tus protocolos y fortalecer tu mentalidad[cite: 405].</p>`,
+                            xp: 50
+                        },
+                        {
+                            title: "Estado de flow en trading: accediendo a tu zona de genio",
+                            subtitle: "Rendimiento sin Esfuerzo",
+                            content: `<p>El estado de 'flow' es un estado mental de total inmersión y concentración en la tarea que se está realizando. [cite_start]En el trading, se caracteriza por la toma de decisiones sin esfuerzo, una percepción distorsionada del tiempo y una fusión completa entre tu conciencia y el mercado[cite: 258]. Acceder a este estado de forma consistente es el objetivo de todo trader de élite.</p>`,
+                            xp: 50
+                        },
+                        {
+                            title: "Programación mental avanzada: hipnosis y visualización cuántica",
+                            subtitle: "Reconfigurando tu Subconsciente",
+                            content: `<p>La programación mental avanzada busca influir en tus patrones de pensamiento subconscientes para el éxito. Técnicas como la visualización (imaginar vívidamente tu éxito y tu disciplina) y la auto-sugestión pueden crear nuevas redes neuronales que apoyen tus objetivos. [cite_start]Por ejemplo, un script para la paciencia podría ser: 'Soy la montaña inmóvil observando las nubes pasar... Mi paciencia es infinita como el océano...'[cite: 242].</p>`,
+                            xp: 50
+                        }
+                    ],
+                    quiz: {
+                        questions: [
+                            {
+                                text: "El estado de 'flow' se caracteriza por:",
+                                options: ["Sobreanálisis de gráficos", "Sensación de esfuerzo y lucha", "Toma de decisiones sin esfuerzo y total inmersión", "Ansiedad y estrés"],
+                                correct: "Toma de decisiones sin esfuerzo y total inmersión"
+                            },
+                            {
+                                text: "La programación mental avanzada busca influir en tus patrones de pensamiento:",
+                                options: ["Conscientes", "Subconscientes", "Lógicos", "Racionales"],
+                                correct: "Subconscientes"
+                            },
+                            {
+                                text: "La 'antifragilidad' en el trading es la capacidad de:",
+                                options: ["Volver a tu estado original después de un shock", "Hacerte más fuerte después de una crisis", "Evitar todas las pérdidas", "Predecir los mercados perfectamente"],
+                                correct: "Hacerte más fuerte después de una crisis"
+                            }
+                        ]
+                    }
+                },
+                {
+                    title: "Ecosistema de Apoyo y Herramientas",
+                    chapters: [
+                        {
+                            title: "Biblioteca del trader psicológico: recursos esenciales actualizados",
+                            subtitle: "El Conocimiento es Poder",
+                            content: `<p>La maestría continua requiere un compromiso con el aprendizaje. Mantén una biblioteca de recursos esenciales, incluyendo libros como 'Trading in the Zone' de Mark Douglas y 'Flow' de Mihaly Csikszentmihalyi. [cite_start]Utiliza también aplicaciones y herramientas que te ayuden a monitorear y optimizar tu rendimiento mental[cite: 249].</p>`,
+                            xp: 50
+                        },
+                        {
+                            title: "Tecnología para el autocontrol: apps, sensores y IA personal",
+                            subtitle: "Aprovechando la Tecnología",
+                            content: `<p>La tecnología moderna ofrece herramientas poderosas para el autocontrol. Apps como 'RescueTime' (para seguimiento de la productividad) y 'MyFitnessPal' (para nutrición) pueden ayudar a mantener un estilo de vida que soporte tu trading. [cite_start]También se están explorando tecnologías más avanzadas como la neuroestimulación transcraneal para la optimización cognitiva[cite: 68].</p>`,
+                            xp: 50
+                        },
+                        {
+                            title: "Construyendo tu red de apoyo: mentores, pares y profesionales",
+                            subtitle: "Nadie Llega Solo a la Cima",
+                            content: `<p>El trading puede ser un camino solitario. Construir una red de apoyo con mentores, otros traders en desarrollo y profesionales (como psicólogos o coaches) es crucial para la longevidad. [cite_start]Los mentores no solo te enseñan habilidades, sino que también te proporcionan una perspectiva externa y un sentido de responsabilidad[cite: 293].</p>`,
+                            xp: 50
+                        }
+                    ],
+                    quiz: {
+                        questions: [
+                            {
+                                text: "Según el texto, una de las razones para tener una red de apoyo es:",
+                                options: ["Para copiar las operaciones de otros traders", "Para tener acceso a noticias falsas", "Para tener una perspectiva externa y responsabilidad", "Para no tener que estudiar"],
+                                correct: "Para tener una perspectiva externa y responsabilidad"
+                            },
+                            {
+                                text: "La neuroestimulación transcraneal se menciona como una tecnología para:",
+                                options: ["Mejorar el sueño", "Optimizar la ejecución de órdenes", "Optimización cognitiva", "Mejorar la velocidad de internet"],
+                                correct: "Optimización cognitiva"
+                            },
+                            {
+                                text: "¿Qué libro se menciona como un recurso esencial para el trader psicológico?",
+                                options: ["'Trading in the Zone' de Mark Douglas", "'Guerra y Paz' de Tolstoi", "'El Señor de los Anillos' de Tolkien", "'El Principito' de Saint-Exupéry"],
+                                correct: "'Trading in the Zone' de Mark Douglas"
+                            }
+                        ]
+                    }
+                },
+                {
+                    title: "Maestría Continua y Legado",
+                    chapters: [
+                        {
+                            title: "Tu plan maestro psicológico personalizado",
+                            subtitle: "El Proyecto de tu Vida",
+                            content: `<p>La maestría no es un destino, sino un proceso continuo. Un plan maestro psicológico es un sistema vivo que evoluciona contigo. [cite_start]Incluye métricas de progreso (tanto financieras como psicológicas, como la estabilidad bajo presión), y un plan para la mejora continua[cite: 299, 310, 311].</p>`,
+                            xp: 50
+                        },
+                        {
+                            title: "Métricas de progreso: midiendo tu evolución mental",
+                            subtitle: "Más Allá del P&L",
+                            content: `<p>Para medir tu evolución, debes ir más allá de las ganancias y pérdidas. Métricas importantes incluyen: el tiempo de reacción a los eventos de alta volatilidad, la adherencia a tu plan de trading y la estabilidad emocional percibida. [cite_start]Estas métricas te dan una visión objetiva de tu progreso psicológico[cite: 311].</p>`,
+                            xp: 50
+                        },
+                        {
+                            title: "Adaptación evolutiva: manteniéndote relevante en mercados cambiantes",
+                            subtitle: "El Trader Antifragil",
+                            content: `<p>Los mercados están en constante evolución. La capacidad de adaptación, de aprender y desaprender, es tu mayor activo. El trader trascendente no solo se beneficia de los mercados; devuelve a la industria, a sus comunidades y a las generaciones futuras. [cite_start]Su legado se mide no solo en lo que acumula, sino en lo que aporta[cite: 332, 334].</p>`,
+                            xp: 50
+                        }
+                    ],
+                    quiz: {
+                        questions: [
+                            {
+                                text: "¿Qué se considera una métrica de progreso psicológico en el trading?",
+                                options: ["El precio de una acción", "La cantidad de trades hechos", "La adherencia a tu plan de trading", "El número de seguidores en redes sociales"],
+                                correct: "La adherencia a tu plan de trading"
+                            },
+                            {
+                                text: "La maestría continua se describe como:",
+                                options: ["Un destino", "Un resultado", "Un proceso continuo", "Un evento aislado"],
+                                correct: "Un proceso continuo"
+                            },
+                            {
+                                text: "El legado de un trader trascendente se mide por:",
+                                options: ["El tamaño de su capital", "El número de autos que tiene", "Lo que acumula y lo que aporta", "El tiempo que ha operado"],
+                                correct: "Lo que acumula y lo que aporta"
+                            }
+                        ]
+                    }
+                },
+            ],
+            badges: [
+                { name: "Iniciado", xp: 100 },
+                { name: "Consciente", xp: 300 },
+                { name: "Disciplinado", xp: 600 },
+                { name: "Maestro", xp: 1200 },
+                { name: "Experto", xp: 2400 },
+                { name: "Gurú", xp: 4800 },
+            ]
+        };
+        
+        const state = {
+            currentModule: 0,
+            currentChapter: 0,
+            xp: 0,
+            completedModules: [],
+            unlockedBadges: [],
+            isQuizActive: false
+        };
+
+        const progressBar = document.getElementById('progressBar');
+        const xpDisplay = document.getElementById('xpDisplay');
+        const chapterContainer = document.getElementById('chapterContainer');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const badgeContainer = document.getElementById('badgeContainer');
+        const badgesList = document.getElementById('badgesList');
+
+        function updateUI() {
+            renderContent();
+            updateNavigationButtons();
+            updateProgressBar();
+            updateXpDisplay();
+            renderBadges();
+        }
+
+        function renderContent() {
+            const module = content.modules[state.currentModule];
+            let chapterContent = '';
+            
+            if (state.isQuizActive) {
+                chapterContent = generateQuizHTML(module.quiz.questions);
+            } else {
+                const chapter = module.chapters[state.currentChapter];
+                chapterContent = `
+                    <h2 id="module-title">Módulo ${state.currentModule + 1}: ${module.title}</h2>
+                    <h3 id="chapter-title">${chapter.title}</h3>
+                    <p class="subtitle">${chapter.subtitle}</p>
+                    ${chapter.content}
+                `;
+            }
+            chapterContainer.innerHTML = chapterContent;
+        }
+
+        function generateQuizHTML(questions) {
+            let html = `
+                <div class="quiz-container">
+                    <h2>Caso Práctico: Mini-Quiz</h2>
+                    <p>Responde las siguientes preguntas para completar el módulo.</p>
+            `;
+            questions.forEach((q, index) => {
+                html += `
+                    <div class="quiz-question" data-question-index="${index}">
+                        <h4>${index + 1}. ${q.text}</h4>
+                        <ul class="quiz-options">
+                            ${q.options.map(option => `<li>${option}</li>`).join('')}
+                        </ul>
+                        <div class="feedback hidden"></div>
+                    </div>
+                `;
+            });
+            html += `<button class="btn" id="submitQuizBtn">Comprobar Respuestas</button></div>`;
+            return html;
+        }
+        
+        function updateNavigationButtons() {
+            const module = content.modules[state.currentModule];
+            
+            prevBtn.disabled = state.currentModule === 0 && state.currentChapter === 0;
+            
+            if (state.isQuizActive) {
+                nextBtn.innerText = 'Finalizar Quiz';
+                nextBtn.disabled = true;
+                prevBtn.disabled = true;
+            } else if (state.currentChapter === module.chapters.length - 1) {
+                nextBtn.innerText = 'Caso práctico &#x25BA;';
+                nextBtn.disabled = false;
+            } else {
+                nextBtn.innerText = 'Siguiente &#x25BA;';
+                nextBtn.disabled = false;
+            }
+            
+            if (state.completedModules.includes(state.currentModule) && state.currentChapter === module.chapters.length - 1 && !state.isQuizActive) {
+                nextBtn.innerText = 'Módulo Completado &#x25BA;';
+                nextBtn.disabled = false;
+            }
+            
+            if (state.currentModule === content.modules.length - 1 && state.completedModules.includes(state.currentModule)) {
+                nextBtn.innerText = 'Finalizar Campus &#x25BA;';
+            }
+        }
+
+        function updateProgressBar() {
+            const totalItems = content.modules.length * 4; // 3 chapters + 1 quiz per module
+            const completedItems = state.completedModules.length * 4;
+            const progressPercentage = (completedItems / totalItems) * 100;
+            progressBar.style.width = `${progressPercentage}%`;
+            progressBar.innerText = `${Math.round(progressPercentage)}%`;
+        }
+        
+        function updateXpDisplay() {
+            xpDisplay.innerText = `XP: ${state.xp}`;
+            checkBadges();
+        }
+
+        function checkBadges() {
+            content.badges.forEach(badge => {
+                if (state.xp >= badge.xp && !state.unlockedBadges.includes(badge.name)) {
+                    state.unlockedBadges.push(badge.name);
+                    alert(`¡Insignia Desbloqueada! ${badge.name}`);
+                    renderBadges();
+                }
+            });
+        }
+        
+        function renderBadges() {
+            if (state.unlockedBadges.length > 0) {
+                badgeContainer.classList.remove('hidden');
+            }
+            badgesList.innerHTML = '';
+            state.unlockedBadges.forEach(badgeName => {
+                const badgeElement = document.createElement('div');
+                badgeElement.classList.add('badge', 'unlocked');
+                badgeElement.innerHTML = `<span class="badge-text">${badgeName.charAt(0)}</span><div class="badge-info">${badgeName}</div>`;
+                badgesList.appendChild(badgeElement);
+            });
+        }
+        
+        function handleQuizClick(e) {
+            if (e.target.tagName === 'LI') {
+                const li = e.target;
+                const questionDiv = li.closest('.quiz-question');
+                const options = questionDiv.querySelectorAll('li');
+                options.forEach(opt => opt.style.pointerEvents = 'none');
+                
+                const questionIndex = parseInt(questionDiv.dataset.questionIndex);
+                const question = content.modules[state.currentModule].quiz.questions[questionIndex];
+                
+                if (li.innerText === question.correct) {
+                    li.classList.add('correct');
+                    questionDiv.querySelector('.feedback').innerHTML = '✅ Correcto';
+                    questionDiv.querySelector('.feedback').classList.remove('hidden', 'incorrect-feedback');
+                    questionDiv.querySelector('.feedback').classList.add('correct-feedback');
+                } else {
+                    li.classList.add('incorrect');
+                    options.forEach(opt => {
+                        if (opt.innerText === question.correct) {
+                            opt.classList.add('correct');
+                        }
+                    });
+                    questionDiv.querySelector('.feedback').innerHTML = '❌ Incorrecto';
+                    questionDiv.querySelector('.feedback').classList.remove('hidden', 'correct-feedback');
+                    questionDiv.querySelector('.feedback').classList.add('incorrect-feedback');
+                }
+            }
+        }
+        
+        function submitQuiz() {
+            const questions = content.modules[state.currentModule].quiz.questions;
+            let allCorrect = true;
+            document.querySelectorAll('.quiz-question').forEach(qDiv => {
+                const selected = qDiv.querySelector('li.correct');
+                if (!selected) {
+                    allCorrect = false;
+                }
+            });
+            
+            if (allCorrect) {
+                const module = content.modules[state.currentModule];
+                state.xp += 100; // XP for completing the quiz
+                state.completedModules.push(state.currentModule);
+                state.isQuizActive = false;
+                
+                let resultMessage = `<div class="quiz-result-container">
+                    <div class="quiz-result-title">¡Quiz Completado!</div>
+                    <p>¡Felicidades! Has respondido correctamente a todas las preguntas.</p>
+                    <div class="quiz-result-xp">+100 XP</div>
+                </div>`;
+                
+                if (state.unlockedBadges.includes(content.badges[state.currentModule].name)) {
+                    resultMessage += `<div class="module-completion-info">Ya has completado este módulo.</div>`;
+                }
+
+                chapterContainer.innerHTML = resultMessage;
+                setTimeout(() => {
+                    updateUI();
+                }, 2000);
+                
+            } else {
+                alert('Aún hay preguntas incorrectas. Por favor, revisa tus respuestas.');
+            }
+        }
+
+        function handleNavigation() {
+            if (state.isQuizActive) {
+                submitQuiz();
+                return;
+            }
+            
+            const module = content.modules[state.currentModule];
+
+            if (state.currentChapter < module.chapters.length - 1) {
+                state.currentChapter++;
+            } else {
+                state.isQuizActive = true;
+            }
+            updateUI();
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (state.isQuizActive) {
+                state.isQuizActive = false;
+                updateUI();
+                return;
+            }
+            
+            if (state.currentChapter > 0) {
+                state.currentChapter--;
+            } else if (state.currentModule > 0) {
+                state.currentModule--;
+                state.currentChapter = content.modules[state.currentModule].chapters.length - 1;
+            }
+            updateUI();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (state.isQuizActive) {
+                submitQuiz();
+                return;
+            }
+
+            const module = content.modules[state.currentModule];
+
+            if (state.currentChapter < module.chapters.length - 1) {
+                state.xp += module.chapters[state.currentChapter].xp;
+                state.currentChapter++;
+            } else if (!state.completedModules.includes(state.currentModule)) {
+                 state.xp += module.chapters[state.currentChapter].xp;
+                 state.isQuizActive = true;
+            } else {
+                state.currentModule++;
+                state.currentChapter = 0;
+            }
+            
+            if (state.currentModule >= content.modules.length) {
+                chapterContainer.innerHTML = `
+                    <div class="congratulations">
+                        <h1>¡Felicidades!</h1>
+                        <p>Has completado el Mini Campus Virtual.</p>
+                        <p>Tu transformación hacia un trader profesional está en marcha.</p>
+                    </div>
+                `;
+                document.querySelector('.navigation').style.display = 'none';
+                return;
+            }
+            
+            updateUI();
+        });
+
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.quiz-container') && e.target.tagName === 'LI') {
+                handleQuizClick(e);
+            }
+            if (e.target.id === 'submitQuizBtn') {
+                submitQuiz();
+            }
+        });
+
+        updateUI();
+
+    </script>
+</body>
+</html>
